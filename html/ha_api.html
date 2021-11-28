@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title>HA API Test</title>
+    </head>
+    <body>
+        <form action='cgi-bin/ha_api.cgi' method='post'>
+            <label for='token' class='form-text-label'>Token</label>
+            <input type='text' name='token' id='token' class='form-text'>
+            <br>
+            <label for='host' class='form-text-label'>Host</label>
+            <input type='text' name='host' id='host' class='form-text'>
+            <br>
+            <label for='debug' class='form-select-label'>Debug?</label>
+            <select name='debug' id='debug' class='form-select'>
+                <option value='true'>Yes</option>
+                <option value='false'>No</option>
+            </select>
+            <input type='hidden' name='forward' id='forward' value='ha_api.html'>
+            <br>
+            <label for='debug' class='form-select-label'>No Output?</label>
+            <select name='nooutput' id='nooutput' class='form-select'>
+                <option value='true'>Yes</option>
+                <option value='false'>No</option>
+            </select>
+            <br>
+            <label for='silent' class='form-select-label'>Silent?</label>
+            <select name='silent' id='silent' class='form-select'>
+                <option value='false'>No</option>
+                <option value='true'>Yes</option>
+            </select>
+            <br>
+            <label for='domain' class='form-select-label'>Domain</label>
+            <select name='domain' id='domain' class='form-select'>
+                <option value='light'>Light</option>
+                <option value='switch'>Switch</option>
+                <option value='input_boolean'>Input_Boolean</option>
+                <option value='input_text'>Input_Text</option>
+            </select>
+            <br>
+            <label for='service' class=form-select-label'>Service</label>
+            <select name='service' id='service' class='form-select'>
+                <option value='status'>Status</option>
+                <option value='set'>Set</option>
+                <option value='reload'>Reload</option>
+                <option value='turn_on'>Turn On</option>
+                <option value='turn_off'>Turn Off</option>
+                <option value='toggle'>Toggle</option>
+            </select>
+            <br>
+            <label for='entity' class='form-text-label'>Entity</label>
+            <input type='text' name='entity' id='entity' class='form-text'>
+            <br>
+            <input type="submit" value="Execute">
+            <input type="reset" value="Reset">
+            <br>
+        </form>
+    </body>
+</html>

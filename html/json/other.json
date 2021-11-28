@@ -1,0 +1,25 @@
+{
+    "config":{
+        "token": "ABC123 - Replace with Home Assistant Long Lived Access Token",
+        "host": "http://home-assistant-url (NOTE NO TRAILING SLASH!!!!!",
+        "debug": "'true' or anything else",
+        "forward": "ha_display.cgi",
+        "css": "../css/ha_display.css",
+        "js": "../js/ha_display.js"
+    },
+    "Other Toggle Some Light":{
+        "entity": "light.some_light",
+        "domain": "light",
+        "action": "toggle"
+    },
+    "Other Turn On Some Switch":{
+        "entity": "switch.some_switch",
+        "domain": "switch",
+        "action": "turn_on"
+    },
+    "Other Turn Off Some Input_Boolean":{
+        "entity": "input_boolean.some_input",
+        "domain": "input_boolean",
+        "action": "turn_off"
+    }
+}

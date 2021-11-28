@@ -1,0 +1,27 @@
+body{
+    width: auto;
+    height: auto;
+    background-color:#323639;
+}
+
+.entity{
+    border-radius: 10px;
+    display:block;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin: 20px;;
+    background-color:rgb(229, 226, 226);
+    float: left;
+    overflow-wrap: break-word;
+    width: 125px;
+    height: 50px;
+    text-align: center;
+    font-variant: small-caps;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.5em;
+    overflow: hidden;
+}
+.entity:hover{
+    cursor: pointer;
+}
