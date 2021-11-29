@@ -5,11 +5,16 @@ class ha_api:
         self.cgidata = cgi.FieldStorage()
         self.debug = self.cgidata.getvalue('debug')
         self.forward = self.cgidata.getvalue('forward')
-        if self.forward == "false" and self.debug != 'true':
+        self.silent = self.cgidata.getvalue('silent')
+        if self.forward == None:
+            self.forward = 'ha_display.cgi'
+        if self.forward == 'false' and self.debug != 'true':
             print("content-type: text/html\n\n<html><body>")
-        elif self.forward != "false" and self.debug == "true":
+        elif self.forward != 'false' and self.debug == "true":
             print("content-type: text/html\n\n<html><body>")
             print(f"<a href='{self.forward}'>Continue to {self.forward}</a>")
+        elif self.forward != 'false' and self.silent == 'false':
+            print('content-type: text/plain\n\n')
         else:
             print(f"Status: 303 See other\nLocation: {self.forward}\n\n")
         if self.debug == 'true':
@@ -56,13 +61,14 @@ class ha_api:
             print(self.url+"<br><br>")
             print(self.headers)
             print("<br><br>")
-        else:
-            print("content-type: text/plain\n\n")
         response = requests.get(self.url,headers=self.headers)
         return response.text
     def execute(self):
+        import json
         if self.service == 'status' and self.debug == 'true':
-            print(self.get())
+            print(json.dumps(self.get()).replace(",",",\n").replace("{","{\n"))
+        elif self.service == 'status' and self.silent == 'false':
+            print(json.dumps(self.get()).replace(",",",\n").replace("{","{\n").replace("\\\"","'"))
         elif self.service == 'status' and self.debug != 'true':
             self.get()
         elif self.service != 'status' and self.debug == 'true':

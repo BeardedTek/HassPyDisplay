@@ -7,17 +7,17 @@
         "css": "../css/ha_display.css",
         "js": "../js/ha_display.js"
     },
-    "Toggle Some Light":{
+    "Light":{
         "entity": "light.some_light",
         "domain": "light",
         "action": "toggle"
     },
-    "Turn On Some Switch":{
+    "Switch":{
         "entity": "switch.some_switch",
         "domain": "switch",
         "action": "turn_on"
     },
-    "Turn Off Some Input_Boolean":{
+    "Input":{
         "entity": "input_boolean.some_input",
         "domain": "input_boolean",
         "action": "turn_off"

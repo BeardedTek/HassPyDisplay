@@ -20,8 +20,8 @@ def config_json():
                 js = config['js']
                 print("content-type: text/html\n\n")
                 print(f"<html>\n<head>\n<style>")
-                fcss = open(css)
-                print(fcss.read())
+                css_file = open(css)
+                print(css_file.read())
                 print(f"</style>")
                 print(f"<script src='{js}'></script>")
                 print("</head>\n<body>")

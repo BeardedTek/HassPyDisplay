@@ -9,19 +9,35 @@ body{
     display:block;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-    margin: 20px;;
+    padding: 5px;
+    margin: 5px;
     background-color:rgb(229, 226, 226);
     float: left;
     overflow-wrap: break-word;
     width: 125px;
-    height: 50px;
+    height: auto;
     text-align: center;
     font-variant: small-caps;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 1.5em;
+    font-size: 1.2em;
     overflow: hidden;
 }
+
+.debug_item{
+    border-radius: 10px;
+    display:block;
+    justify-content: center;
+    align-items: center;
+    padding: 2.5%;
+    margin: 2.5%;
+    background-color:rgb(229, 226, 226);
+    float: left;
+    width: 95%;
+    height: auto;
+    text-align: left;
+    font-size: 1.1em;
+}
+
 .entity:hover{
     cursor: pointer;
 }
