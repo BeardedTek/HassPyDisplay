@@ -1,7 +1,7 @@
 # HassPyDisplay
 * Uses the Home Assistant API to control entities within Home Assistant via web interface
 * This is intended as a wall display (small 7" touchscreen device)
-* Custom CSS can be included via the json file
+* Custom CSS can be included per page via json file
 
 ## Todo:
 * Get Current State for each entity
