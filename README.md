@@ -1,6 +1,15 @@
 # HassPyDisplay
-Uses the Home Assistant API to control entities within Home Assistant via web interface
+* Uses the Home Assistant API to control entities within Home Assistant via web interface
+* This is intended as a wall display (small 7" touchscreen device)
+* Custom CSS can be included via the json file
 
+## Todo:
+* Get Current State for each entity
+(Already implemented in ha_api.cgi, just need to integrate to hasspydisplay.cgi)
+* Display Entity Attributes (maybe have a more info button)
+* Documentation Documentation Documentation
+(Need to better comment the code at a minimum)
+***
 # Setup
 
 Place contents of cgi-bin into apache2's cgi-bin location.  You can change this directory on Ubuntu by editing /etc/apache2/conf-enabled/serve-cgi-bin.conf
