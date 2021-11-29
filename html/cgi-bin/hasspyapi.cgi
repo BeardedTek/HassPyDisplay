@@ -1,3 +1,4 @@
+#!/usr/bin/python
 #   HassPyAPI - Python 3 CGI Script for accessing the Home Assistant REST API
 #   Copyright (C) 2021  The Bearded Tek (http://www.beardedtek.com) William Kenny
 #
@@ -14,7 +15,7 @@
 #    You should have received a copy of the GNU General Public License
 #   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#!/usr/bin/python
+
 import cgi
 class hasspyapi:
     def __init__(self):
@@ -23,7 +24,7 @@ class hasspyapi:
         self.forward = self.cgidata.getvalue('forward')
         self.silent = self.cgidata.getvalue('silent')
         if self.forward == None:
-            self.forward = 'hasspyapi.cgi'
+            self.forward = '../hasspyapi.html'
         if self.forward == 'false' and self.debug != 'true':
             print("content-type: text/html\n\n<html><body>")
         elif self.forward != 'false' and self.debug == "true":

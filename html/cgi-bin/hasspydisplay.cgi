@@ -1,3 +1,4 @@
+#!/usr/bin/python
 #   HassPyDisplay - Python 3 CGI Script for Display of information from Home Assistant
 #                   via a web interface
 #   Copyright (C) 2021  The Bearded Tek (http://www.beardedtek.com) William Kenny
@@ -15,7 +16,7 @@
 #    You should have received a copy of the GNU General Public License
 #   along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-#!/usr/bin/python
+
 import cgi
 import json
 import string
