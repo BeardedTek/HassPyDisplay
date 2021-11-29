@@ -3,7 +3,7 @@
         "token": "ABC123 - Replace with Home Assistant Long Lived Access Token",
         "host": "http://home-assistant-url (NOTE NO TRAILING SLASH!!!!!",
         "debug": "'true' or anything else",
-        "forward": "ha_display.cgi",
+        "forward": "hasspydisplay.cgi",
         "css": "../css/ha_display.css",
         "js": "../js/ha_display.js"
     },
