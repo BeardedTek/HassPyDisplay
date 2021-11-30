@@ -20,12 +20,13 @@
 import cgi
 import json
 import string
-class ha_display:
+class hasspydisplay:
     def __init__(self):
         self.token = ""
         self.host = ""
         self.css = ""
         self.debug = ""
+        self.debugme = ""
         self.debug_output = []
         self.forward = ""
         self.js = ""
@@ -36,23 +37,26 @@ class ha_display:
         self.data = ""
         self.items = []
         self.input = cgi.FieldStorage()
+        if self.input.getvalue('debugme') == 'true':
+            self.debugme = True
+        else:
+            self.debugme = False
         if self.input.getvalue('debug') == 'true':
             self.debug = True
         else:
             self.debug = False
-        
         if self.input.getvalue('page') != None:
             self.page_title = self.input.getvalue('page')
             self.page = "/var/www/html/json/"+self.page_title+".json"
         else:
             self.page = "/var/www/html/json/default.json"
-        self.debug_append("Page: "+self.page)
+        #self.debug_append("Page: "+self.page)
         
     def execute(self):
         self.get_config()
         self.get_items()
         self.print_header()
-        if self.debug:
+        if self.debugme:
             self.print_debug()
         self.print_items()
         self.print_footer()
@@ -64,7 +68,7 @@ class ha_display:
         print("<div class='debug'>\n")
         num = 1
         for x in self.debug_output:
-            print(f"<div class='debug_item'><span>{num}</span><span>{x}</span></div>\n")
+            print(f"<div class='debug_item'><span></span><span>{x}</span></div>\n")
             num += 1
         print("</div>\n")
 
@@ -74,10 +78,15 @@ class ha_display:
             for key in self.data:
                 if key == "config":
                     config = self.data[key]
-                    self.debug_append(json.dumps(self.data).replace("}","}<br>"))
+                    #self.debug_append(json.dumps(self.data).replace("}","}<br>"))
                     self.token = config['token']
+                    self.debug_append(self.token)
                     self.host = config['host']
+                    self.debug_append(self.host)
                     self.forward = config['forward']
+                    self.debug_append(self.forward)
+                    self.logfile = config['logfile']
+                    self.debug_append(self.logfile)
                     css = config['css']
                     if css != None:
                         css_file = open(css)
@@ -124,14 +133,16 @@ class ha_display:
         print(f"<script>\n{self.js}\n</script>\n")
 
     def print_items(self):
+        from hasspyapi import hasspyapi
         for entity in self.items:
-            self.debug_append(len(entity))
+            #self.debug_append(len(entity))
             entity_id = entity[0]
             label_class = entity[1].replace(" ","_")
             label = entity[3].replace("_"," ") + " " + entity[1]
             onclick = entity[2]
             action = entity[3]
             domain = entity[4]
+            hpa_status = hasspyapi([self.host,self.token,domain,"status",entity_id,self.logfile,self.debug])
             print(f"<form method='post' id='{entity_id}' action='hasspyapi.cgi'>\n")
             print(f"<input type='hidden' name='token' id='token' value=\"{self.token}\">\n")
             print(f"<input type='hidden' name='host' id='host' value='{self.host}'\n>")
@@ -140,12 +151,16 @@ class ha_display:
             print(f"<input type='hidden' name='entity' id='entity' value='{entity_id}'>\n")
             print(f"<input type='hidden' name='service' id='service' value='{action}'>\n")
             print(f"<input type='hidden' name='domain' id='domain' value='{domain}'>\n")
-            print(f"<div onclick='{onclick}' class='entity {label_class}''>{label}</div>\n")
+            status = hpa_status.get_status()
+            if status[1] == 'on' or status[1] == 'open':
+                print(f"<div onclick='{onclick}' class='entity {label_class} on'>{label}</div>\n")
+            else:
+                print(f"<div onclick='{onclick}' class='entity {label_class}'>{label}</div>\n")
             print("</form>\n\n")
     def print_footer(self):
         print("</body>\n<html>\n")
 
 def main():
-    hpd = ha_display()
+    hpd = hasspydisplay()
     hpd.execute()
 main()

@@ -41,3 +41,6 @@ body{
 .entity:hover{
     cursor: pointer;
 }
+.on{
+    background-color: rgb(218, 208, 119)
+}

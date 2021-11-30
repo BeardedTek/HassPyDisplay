@@ -2,8 +2,8 @@
     "config":{
         "token": "ABC123 - Replace with Home Assistant Long Lived Access Token",
         "host": "http://home-assistant-url (NOTE NO TRAILING SLASH!!!!!",
-        "debug": "'true' or anything else",
-        "forward": "hasspydisplay.cgi",
+        "logfile": "/var/log/hasspydisplay",
+        "forward": "hasspydisplay.py",
         "css": "../css/ha_display.css",
         "js": "../js/ha_display.js"
     },
