@@ -4,9 +4,8 @@
 * Custom CSS can be included per page via json file
 
 ## Todo:
-* Get Current State for each entity
-(Already implemented in ha_api.cgi, just need to integrate to hasspydisplay.cgi)
-* Display Entity Attributes (maybe have a more info button)
+* ~~Get Current State for each entity~~
+* Display Entity Attributes (maybe have a more info button): The API now pulls all the attributes and returns them in a list for status, just need to implement it in hasspydisplay.py
 * Documentation Documentation Documentation
 (Need to better comment the code at a minimum)
 ***
