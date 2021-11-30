@@ -123,8 +123,7 @@ class hasspydisplay:
         print(f"<title>{self.page_title}</title>\n")
         self.print_css()
         self.print_js()
-        print(f"</head>\n")
-        print(f"<body>\n")
+        print(f"</head>\n<body>\n<div class='container'>\n")
     
     def print_css(self):
         print(f"<style>\n{self.css}\n</style>\n")
@@ -138,11 +137,11 @@ class hasspydisplay:
             #self.debug_append(len(entity))
             entity_id = entity[0]
             label_class = entity[1].replace(" ","_")
-            label = entity[3].replace("_"," ") + " " + entity[1]
             onclick = entity[2]
             action = entity[3]
             domain = entity[4]
             hpa_status = hasspyapi([self.host,self.token,domain,"status",entity_id,self.logfile,self.debug])
+            print(f"<div onclick='{onclick}' class='entity {label_class} {hpa_status.get_status()[1]}'>")
             print(f"<form method='post' id='{entity_id}' action='hasspyapi.cgi'>\n")
             print(f"<input type='hidden' name='token' id='token' value=\"{self.token}\">\n")
             print(f"<input type='hidden' name='host' id='host' value='{self.host}'\n>")
@@ -151,14 +150,10 @@ class hasspydisplay:
             print(f"<input type='hidden' name='entity' id='entity' value='{entity_id}'>\n")
             print(f"<input type='hidden' name='service' id='service' value='{action}'>\n")
             print(f"<input type='hidden' name='domain' id='domain' value='{domain}'>\n")
-            status = hpa_status.get_status()
-            if status[1] == 'on' or status[1] == 'open':
-                print(f"<div onclick='{onclick}' class='entity {label_class} on'>{label}</div>\n")
-            else:
-                print(f"<div onclick='{onclick}' class='entity {label_class}'>{label}</div>\n")
+            print(f"{entity[1]}</div>\n")
             print("</form>\n\n")
     def print_footer(self):
-        print("</body>\n<html>\n")
+        print("</div>\n</body>\n<html>\n")
 
 def main():
     hpd = hasspydisplay()

@@ -1,26 +1,53 @@
 body{
     width: auto;
     height: auto;
-    background-color:#323639;
+    background-color:rgb(49, 49, 58)
 }
-
+.container{
+    background-image: url('../img/kitchen.webp');
+    background-color: #cccccc;
+    width: 1000px;
+    height: 550px;;
+    margin: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    vertical-align: bottom;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
+}
 .entity{
     border-radius: 10px;
-    display:block;
+    border: 2px solid rgba(255,255,255,0.1);
+    display:flex;
     justify-content: center;
     align-items: center;
     padding: 5px;
     margin: 5px;
-    background-color:rgb(229, 226, 226);
+    background-color:rgba(255, 255, 255, 0.1);
     float: left;
     overflow-wrap: break-word;
-    width: 125px;
-    height: auto;
+    width: 240px;
+    height: 120px;
     text-align: center;
-    font-variant: small-caps;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 1.2em;
+    font-size: 1.75rem;
+    color: rgba(255,255,255,0.5);
     overflow: hidden;
+    backdrop-filter: blur(2px) contrast(0.8);
+    bottom: 0;
+}
+.entity:hover{
+    cursor: pointer;
+    backdrop-filter: blur(2px) contrast(0.3);
+}
+
+.on{
+    background-color: rgba(196, 167, 83, 0.5);
+    border: 2px solid rgba(196,167,83,0.5);
 }
 
 .debug_item{
@@ -30,17 +57,10 @@ body{
     align-items: center;
     padding: 2.5%;
     margin: 2.5%;
-    background-color:rgb(229, 226, 226);
+    background-color:rgba(229, 226, 226, 0.1);
     float: left;
     width: 95%;
     height: auto;
     text-align: left;
     font-size: 1.1em;
-}
-
-.entity:hover{
-    cursor: pointer;
-}
-.on{
-    background-color: rgb(218, 208, 119)
 }
