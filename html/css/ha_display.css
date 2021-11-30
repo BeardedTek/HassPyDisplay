@@ -1,4 +1,7 @@
 body{
+    display:flex;
+    align-items: center;
+    justify-content: center;
     width: auto;
     height: auto;
     background-color:rgb(49, 49, 58)
@@ -19,35 +22,73 @@ body{
     justify-content: center;
     align-items: center;
 }
-.entity{
-    border-radius: 10px;
+
+.menu{
+    height: 100px;
+    width: 100%;
+    display: flex;
+    position: relative;
+    top: 0;
+    left: 0;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    align-items: stretch;
+}
+
+.menu_item{
+    height: 1.25em;
+    width: auto;
+    display: inline;
+    float: left;
+    justify-content: center;
+    overflow: hidden;
+    backdrop-filter: blur(1px) contrast(0.8);
+    background-color:rgba(255, 255, 255, 0.1);
     border: 2px solid rgba(255,255,255,0.1);
+    padding: 5px;
+    margin: 5px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.75rem;
+    text-align: center;
+    color: rgba(255,255,255,0.5);
+}
+
+.menu_item:hover{
+    cursor: pointer;
+    backdrop-filter: blur(1px) contrast(0.3);
+}
+
+.entity{
     display:flex;
     justify-content: center;
     align-items: center;
-    padding: 5px;
-    margin: 5px;
-    background-color:rgba(255, 255, 255, 0.1);
-    float: left;
+    overflow: hidden;
     overflow-wrap: break-word;
+    background-color:rgba(255, 255, 255, 0.1);
     width: 240px;
     height: 120px;
-    text-align: center;
+    backdrop-filter: blur(1px) contrast(0.8);
+    border-radius: 10px;
+    border: 2px solid rgba(255,255,255,0.1);
+    padding: 5px;
+    margin: 5px;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1.75rem;
+    text-align: center;
     color: rgba(255,255,255,0.5);
-    overflow: hidden;
-    backdrop-filter: blur(2px) contrast(0.8);
-    bottom: 0;
 }
 .entity:hover{
     cursor: pointer;
-    backdrop-filter: blur(2px) contrast(0.3);
+    backdrop-filter: blur(1px) contrast(0.3);
 }
 
 .on{
     background-color: rgba(196, 167, 83, 0.5);
     border: 2px solid rgba(196,167,83,0.5);
+}
+
+.error{
+    background-color: rgba(255,0,0,0.5)
 }
 
 .debug_item{

@@ -37,6 +37,7 @@ class hasspydisplay:
         self.data = ""
         self.items = []
         self.input = cgi.FieldStorage()
+        self.test = self.input.getvalue('test')
         if self.input.getvalue('debugme') == 'true':
             self.debugme = True
         else:
@@ -51,15 +52,6 @@ class hasspydisplay:
         else:
             self.page = "/var/www/html/json/default.json"
         #self.debug_append("Page: "+self.page)
-        
-    def execute(self):
-        self.get_config()
-        self.get_items()
-        self.print_header()
-        if self.debugme:
-            self.print_debug()
-        self.print_items()
-        self.print_footer()
 
     def debug_append(self,output):
         self.debug_output.append(output)
@@ -71,6 +63,13 @@ class hasspydisplay:
             print(f"<div class='debug_item'><span></span><span>{x}</span></div>\n")
             num += 1
         print("</div>\n")
+
+    def get_config_list(self):
+        import glob
+        config_list = glob.glob('../json/*.json')
+        for i in range(len(config_list)):
+            config_list[i] = config_list[i].replace("../json/","").replace(".json","").replace("_"," ")
+        return config_list
 
     def get_config(self):
         with open(self.page) as self.page_json:
@@ -99,6 +98,7 @@ class hasspydisplay:
                         self.js = js_file.read()
                     else:
                         self.js = "\n"
+
     def get_items(self):
         i = 0
         with open(self.page) as self.page_json:
@@ -121,10 +121,23 @@ class hasspydisplay:
     def print_header(self):
         print(f"content-type: text/html\n\n<html>\n<head>\n")
         print(f"<title>{self.page_title}</title>\n")
+        print(f"<meta name='viewport' content='width=1000, initial-scale=1'>")
         self.print_css()
         self.print_js()
         print(f"</head>\n<body>\n<div class='container'>\n")
-    
+
+    def print_menu(self):
+        menu_item = self.get_config_list()
+        print(f"<div class='menu'>")
+        for i in range(len(menu_item)):
+            page = menu_item[i].replace(" ","_")
+            form = "<form id='"+page+"-menu' action=''>"
+            form += "<input type='hidden' id='page' name='page' value='"+page+"'>\n"
+            form += menu_item[i]+"\n"
+            form += "</form>"
+            print(f"<div class='menu_item {menu_item[i]}' onclick='document.getElementById(\"{page}-menu\").submit()'>\n{form}\n</div>\n")
+        print(f"</div>")
+
     def print_css(self):
         print(f"<style>\n{self.css}\n</style>\n")
 
@@ -141,7 +154,12 @@ class hasspydisplay:
             action = entity[3]
             domain = entity[4]
             hpa_status = hasspyapi([self.host,self.token,domain,"status",entity_id,self.logfile,self.debug])
-            print(f"<div onclick='{onclick}' class='entity {label_class} {hpa_status.get_status()[1]}'>")
+            try:
+                status = hpa_status.get_status()[1]
+                self.debug_append(status)
+            except:
+                status = 'error'
+            print(f"<div onclick='{onclick}' class='entity {label_class} {status}'>")
             print(f"<form method='post' id='{entity_id}' action='hasspyapi.cgi'>\n")
             print(f"<input type='hidden' name='token' id='token' value=\"{self.token}\">\n")
             print(f"<input type='hidden' name='host' id='host' value='{self.host}'\n>")
@@ -154,6 +172,21 @@ class hasspydisplay:
             print("</form>\n\n")
     def print_footer(self):
         print("</div>\n</body>\n<html>\n")
+
+    def execute(self):
+        if self.test == 'config_list':
+            print("content-type: text/plain\n\n")
+            print(self.get_config_list())
+        else:
+            self.get_config()
+            self.get_items()
+            self.print_header()
+            if self.debugme:
+                self.print_debug()
+            else:
+                self.print_menu()
+                self.print_items()
+            self.print_footer()
 
 def main():
     hpd = hasspydisplay()
