@@ -13,7 +13,7 @@
 ***
 # Setup
 
-*Place contents of cgi-bin into apache2's cgi-bin location.
+* Place contents of cgi-bin into apache2's cgi-bin location.
 * Place the rest in your html folder
 * Edit example.json, rename it to title of menu item and place in html/json directory
 * Filename dictates menu item name #CHANGEME#
