@@ -134,19 +134,19 @@ class hasspydisplay:
         for i in range(len(menu_item)):
             if i == 0:
                 form = "<form id='default-menu' action=''>"
-                form += "<input type='hidden' id='page' name='page' value='default'>\n"
-                form += "Home\n"
+                form += "<input type='hidden' id='page' name='page' value='default'>"
+                form += "Home"
                 form += "</form>"
-                print(f"<div class='menu_item default' onclick='document.getElementById(\"default-menu\").submit()'>\n{form}\n</div>\n")
+                print(f"<div class='menu_item default' onclick='document.getElementById(\"default-menu\").submit()'>{form}</div>")
             if menu_item[i] != 'default':
                 page = menu_item[i].replace(" ","_")
                 title = menu_item[i]
                 form = "<form id='"+page+"-menu' action=''>"
-                form += "<input type='hidden' id='page' name='page' value='"+page+"'>\n"
-                form += title+"\n"
+                form += "<input type='hidden' id='page' name='page' value='"+page+"'>"
+                form += title
                 form += "</form>"
-                print(f"<div class='menu_item {menu_item[i]}' onclick='document.getElementById(\"{page}-menu\").submit()'>\n{form}\n</div>\n")
-        print(f"</div>\n")
+                print(f"<div class='menu_item {menu_item[i]}' onclick='document.getElementById(\"{page}-menu\").submit()'>{form}</div>")
+        print(f"</div>")
 
     def print_css(self):
         print(f"<style>\n{self.css.replace('##PICTURE##',self.image)}\n</style>\n")
@@ -171,16 +171,16 @@ class hasspydisplay:
             except:
                 status = 'error'
             print(f"<div onclick='{onclick}' class='entity {label_class} {status}'>")
-            print(f"<form method='post' id='{entity_id}' action='hasspyapi.cgi'>\n")
-            print(f"<input type='hidden' name='token' id='token' value=\"{self.token}\">\n")
-            print(f"<input type='hidden' name='host' id='host' value='{self.host}'\n>")
+            print(f"<form method='post' id='{entity_id}' action='hasspyapi.cgi'>")
+            print(f"<input type='hidden' name='token' id='token' value=\"{self.token}\">")
+            print(f"<input type='hidden' name='host' id='host' value='{self.host}'>")
             print(f"<input type='hidden' name='debug' id='debug' value='{self.debug}'>")
-            print(f"<input type='hidden' name='forward' id='forward' value='{self.forward}'>\n")
-            print(f"<input type='hidden' name='entity' id='entity' value='{entity_id}'>\n")
-            print(f"<input type='hidden' name='service' id='service' value='{action}'>\n")
-            print(f"<input type='hidden' name='domain' id='domain' value='{domain}'>\n")
-            print(f"{entity[1]}</div>\n")
-            print("</form>\n\n")
+            print(f"<input type='hidden' name='forward' id='forward' value='{self.forward}'>")
+            print(f"<input type='hidden' name='entity' id='entity' value='{entity_id}'>")
+            print(f"<input type='hidden' name='service' id='service' value='{action}'>")
+            print(f"<input type='hidden' name='domain' id='domain' value='{domain}'>")
+            print(f"{entity[1]}</div>")
+            print("</form>")
     def print_footer(self):
         print("</div>\n</div>\n</body>\n<html>\n")
 
