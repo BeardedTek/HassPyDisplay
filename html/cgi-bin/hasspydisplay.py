@@ -123,7 +123,7 @@ class hasspydisplay:
     def print_header(self):
         print(f"content-type: text/html\n\n<html>\n<head>\n")
         print(f"<title>Home - {self.page_title.replace('_',' ')}</title>\n")
-        print(f"<meta name='viewport' content='width=1000, initial-scale=1'>")
+        #print(f"<meta name='viewport' content='width=1000px;, height=device-height, initial-scale=1'>")
         self.print_css()
         self.print_js()
         print(f"</head>\n<body>\n<div class='container'>\n")

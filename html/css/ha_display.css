@@ -25,7 +25,8 @@ body{
 }
 
 .menu{
-    height: 100px;
+    min-height: 75px;
+    max-height: 150px;
     width: 1000px;
     display: flex;
     position: relative;
@@ -36,7 +37,8 @@ body{
     align-items: stretch;
 }
 .content{
-    height: 450px;
+    min-height: 400px;
+    max-height: 475px;
     width: 100%;
     display: flex;
     flex-flow: row wrap;
@@ -46,7 +48,7 @@ body{
 }
 
 .menu_item{
-    height: 80px;
+    height: 70px;
     min-width: 160px;
     width: auto;
     display: flex;
@@ -58,8 +60,7 @@ body{
     background-color:rgba(85,85,85, 0.5);
     border: 2px solid rgba(255,255,255,0.1);
     border-radius: 10px;
-    padding: 5px;
-    margin: 5px;
+    margin: 2.5;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1.75rem;
     text-align: center;
