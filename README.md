@@ -6,6 +6,7 @@
 
 ## Todo:
 * ~~Get Current State for each entity~~
+* ~~Generate menu from contents of the json directory~~
 * Display Entity Attributes (maybe have a more info button): The API now pulls all the attributes and returns them in a list for status, just need to implement it in hasspydisplay.py
 * Documentation Documentation Documentation
 (Need to better comment the code at a minimum)
@@ -14,8 +15,9 @@
 
 Place contents of cgi-bin into apache2's cgi-bin location.  You can change this directory on Ubuntu by editing /etc/apache2/conf-enabled/serve-cgi-bin.conf
 
-Place the rest in your html folder (/var/www/html by default on Ubuntu)
-Must edit json/default.json at a minimum to start.
+* Place the rest in your html folder (/var/www/html by default on Ubuntu)
+* Rename default.json as it is ignored.
+* Filename dictates menu item name #CHANGEME#
 Follow the instructions therein
 
 # ALPHA VERSION

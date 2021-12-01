@@ -122,7 +122,7 @@ class hasspydisplay:
         self.debug_append(self.items)
     def print_header(self):
         print(f"content-type: text/html\n\n<html>\n<head>\n")
-        print(f"<title>{self.page_title}</title>\n")
+        print(f"<title>Home - {self.page_title.replace('_',' ')}</title>\n")
         print(f"<meta name='viewport' content='width=1000, initial-scale=1'>")
         self.print_css()
         self.print_js()
@@ -132,17 +132,21 @@ class hasspydisplay:
         menu_item = self.get_config_list()
         print(f"<div class='menu'>")
         for i in range(len(menu_item)):
-            page = menu_item[i].replace(" ","_")
-            # DONT DISPLAY DEFAULT ENTRIES!!!
-            form = "<form id='"+page+"-menu' action=''>"
-            form += "<input type='hidden' id='page' name='page' value='"+page+"'>\n"
-            form += menu_item[i]+"\n"
-            form += "</form>"
-            if menu_item[i] == "other" or menu_item[i] == "default":
-                page=None
-            else:
+            if i == 0:
+                form = "<form id='default-menu' action=''>"
+                form += "<input type='hidden' id='page' name='page' value='default'>\n"
+                form += "Home\n"
+                form += "</form>"
+                print(f"<div class='menu_item default' onclick='document.getElementById(\"default-menu\").submit()'>\n{form}\n</div>\n")
+            if menu_item[i] != 'default':
+                page = menu_item[i].replace(" ","_")
+                title = menu_item[i]
+                form = "<form id='"+page+"-menu' action=''>"
+                form += "<input type='hidden' id='page' name='page' value='"+page+"'>\n"
+                form += title+"\n"
+                form += "</form>"
                 print(f"<div class='menu_item {menu_item[i]}' onclick='document.getElementById(\"{page}-menu\").submit()'>\n{form}\n</div>\n")
-        print(f"</div>")
+        print(f"</div>\n")
 
     def print_css(self):
         print(f"<style>\n{self.css.replace('##PICTURE##',self.image)}\n</style>\n")
@@ -151,6 +155,7 @@ class hasspydisplay:
         print(f"<script>\n{self.js}\n</script>\n")
 
     def print_items(self):
+        print(f"<div class='content'>\n")
         from hasspyapi import hasspyapi
         for entity in self.items:
             #self.debug_append(len(entity))
@@ -177,7 +182,7 @@ class hasspydisplay:
             print(f"{entity[1]}</div>\n")
             print("</form>\n\n")
     def print_footer(self):
-        print("</div>\n</body>\n<html>\n")
+        print("</div>\n</div>\n</body>\n<html>\n")
 
     def execute(self):
         if self.test == 'config_list':

@@ -11,7 +11,7 @@ body{
     background-color: #cccccc;
     min-width: 530px;
     max-width: 1000px;
-    height: 550px;;
+    height: 550px;
     margin: auto;
     background-position: center;
     background-repeat: no-repeat;
@@ -26,7 +26,7 @@ body{
 
 .menu{
     height: 100px;
-    width: 100%;
+    width: 1000px;
     display: flex;
     position: relative;
     top: 0;
@@ -34,6 +34,15 @@ body{
     flex-flow: row wrap;
     justify-content: flex-end;
     align-items: stretch;
+}
+.content{
+    height: 450px;
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
 }
 
 .menu_item{

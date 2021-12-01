@@ -4,23 +4,8 @@
         "host": "http://home-assistant-url (NOTE NO TRAILING SLASH!!!!!",
         "logfile": "/var/log/hasspydisplay",
         "forward": "hasspydisplay.py",
-        "image": "../img/home_front.webp",
+        "image": "../img/home.webp",
         "css": "../css/ha_display.css",
         "js": "../js/ha_display.js"
-    },
-    "Light":{
-        "entity": "light.some_light",
-        "domain": "light",
-        "action": "toggle"
-    },
-    "Switch":{
-        "entity": "switch.some_switch",
-        "domain": "switch",
-        "action": "turn_on"
-    },
-    "Input":{
-        "entity": "input_boolean.some_input",
-        "domain": "input_boolean",
-        "action": "turn_off"
     }
 }
