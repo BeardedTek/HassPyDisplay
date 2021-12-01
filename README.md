@@ -1,5 +1,5 @@
 # HassPyDisplay
-[![v0.3.1](/html/img/hasspydisplay.png)
+![v0.3.1](/html/img/hasspydisplay.png)
 * Uses the Home Assistant API to control entities within Home Assistant via web interface
 * This is intended as a wall display (small 7" touchscreen device)
 * Custom CSS can be included per page via json file
