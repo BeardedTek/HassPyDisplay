@@ -13,12 +13,46 @@
 ***
 # Setup
 
-Place contents of cgi-bin into apache2's cgi-bin location.  You can change this directory on Ubuntu by editing /etc/apache2/conf-enabled/serve-cgi-bin.conf
-
-* Place the rest in your html folder (/var/www/html by default on Ubuntu)
-* Rename default.json as it is ignored.
+*Place contents of cgi-bin into apache2's cgi-bin location.
+* Place the rest in your html folder
+* Edit example.json, rename it to title of menu item and place in html/json directory
 * Filename dictates menu item name #CHANGEME#
-Follow the instructions therein
+
+***
+## example.json:
+```
+{
+    "config":{
+        "token": "YOUR HA Long Lived Access Token",
+        "host": "http(s)://homeassistant.local:8123",
+        "logfile": "/var/log/hasspydisplay",
+        "forward": "hasspydisplay.py?page=example.json",
+        "image": "../img/home_front.webp",
+        "css": "../css/ha_display.css",
+        "js": "../js/ha_display.js"
+    },
+    "Driveway":{
+        "entity": "light.driveway_lights",
+        "domain": "light",
+        "action": "toggle"
+    },
+    "Garage":{
+        "entity": "light.garage_lights",
+        "domain": "light",
+        "action": "toggle"
+    },
+    "Open Garage Door":{
+        "entity": "input_boolean.garage_door_open",
+        "domain": "input_boolean",
+        "action": "turn_on"
+    },
+    "Close Garage Door":{
+        "entity": "input_boolean.garage_door_close",
+        "domain": "input_boolean",
+        "action": "turn_on"
+    }
+}
+```
 
 # ALPHA VERSION
 This is VERY early stages.  If you have any input, please feel free to add an issue/pull request.
