@@ -68,8 +68,7 @@ class hasspydisplay:
         import glob
         config_list = glob.glob('../json/*.json')
         for i in range(len(config_list)):
-            if config_list[i] != "other.json" or config_list[i] != "default.json":
-                config_list[i] = config_list[i].replace("../json/","").replace(".json","").replace("_"," ")
+            config_list[i] = config_list[i].replace("../json/","").replace(".json","").replace("_"," ")
         return config_list
 
     def get_config(self):
@@ -85,6 +84,8 @@ class hasspydisplay:
                     self.debug_append(self.host)
                     self.forward = config['forward']
                     self.debug_append(self.forward)
+                    self.image = config['image']
+                    self.debug_append(self.image)
                     self.logfile = config['logfile']
                     self.debug_append(self.logfile)
                     css = config['css']
@@ -131,18 +132,20 @@ class hasspydisplay:
         menu_item = self.get_config_list()
         print(f"<div class='menu'>")
         for i in range(len(menu_item)):
-            if menu_item[i] != "default" or menu_item[i] != "other":
-                # DONT DISPLAY DEFAULT ENTRIES!!!
-                page = menu_item[i].replace(" ","_")
-                form = "<form id='"+page+"-menu' action=''>"
-                form += "<input type='hidden' id='page' name='page' value='"+page+"'>\n"
-                form += menu_item[i]+"\n"
-                form += "</form>"
+            page = menu_item[i].replace(" ","_")
+            # DONT DISPLAY DEFAULT ENTRIES!!!
+            form = "<form id='"+page+"-menu' action=''>"
+            form += "<input type='hidden' id='page' name='page' value='"+page+"'>\n"
+            form += menu_item[i]+"\n"
+            form += "</form>"
+            if menu_item[i] == "other" or menu_item[i] == "default":
+                page=None
+            else:
                 print(f"<div class='menu_item {menu_item[i]}' onclick='document.getElementById(\"{page}-menu\").submit()'>\n{form}\n</div>\n")
         print(f"</div>")
 
     def print_css(self):
-        print(f"<style>\n{self.css}\n</style>\n")
+        print(f"<style>\n{self.css.replace('##PICTURE##',self.image)}\n</style>\n")
 
     def print_js(self):
         print(f"<script>\n{self.js}\n</script>\n")

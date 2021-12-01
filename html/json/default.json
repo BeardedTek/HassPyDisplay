@@ -4,6 +4,7 @@
         "host": "http://home-assistant-url (NOTE NO TRAILING SLASH!!!!!",
         "logfile": "/var/log/hasspydisplay",
         "forward": "hasspydisplay.py",
+        "image": "../img/home_front.webp",
         "css": "../css/ha_display.css",
         "js": "../js/ha_display.js"
     },

@@ -7,9 +7,10 @@ body{
     background-color:rgb(49, 49, 58)
 }
 .container{
-    background-image: url('../img/kitchen.webp');
+    background-image: url('##PICTURE##');
     background-color: #cccccc;
-    width: 1000px;
+    min-width: 530px;
+    max-width: 1000px;
     height: 550px;;
     margin: auto;
     background-position: center;
@@ -42,15 +43,15 @@ body{
     float: left;
     justify-content: center;
     overflow: hidden;
-    backdrop-filter: blur(1px) contrast(0.8);
-    background-color:rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(1px) contrast(0.6);
+    background-color:rgba(85,85,85, 0.5);
     border: 2px solid rgba(255,255,255,0.1);
     padding: 5px;
     margin: 5px;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1.75rem;
     text-align: center;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255,255,255,0.8);
 }
 
 .menu_item:hover{
@@ -64,10 +65,10 @@ body{
     align-items: center;
     overflow: hidden;
     overflow-wrap: break-word;
-    background-color:rgba(255, 255, 255, 0.1);
+    background-color:rgba(85,85,85, 0.5);
     width: 240px;
     height: 120px;
-    backdrop-filter: blur(1px) contrast(0.8);
+    backdrop-filter: blur(1px) contrast(0.6);
     border-radius: 10px;
     border: 2px solid rgba(255,255,255,0.1);
     padding: 5px;
@@ -75,7 +76,7 @@ body{
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1.75rem;
     text-align: center;
-    color: rgba(255,255,255,0.5);
+    color: rgba(255,255,255, 0.8);
 }
 .entity:hover{
     cursor: pointer;
