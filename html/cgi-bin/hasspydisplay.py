@@ -68,7 +68,8 @@ class hasspydisplay:
         import glob
         config_list = glob.glob('../json/*.json')
         for i in range(len(config_list)):
-            config_list[i] = config_list[i].replace("../json/","").replace(".json","").replace("_"," ")
+            if config_list[i] != "other.json" or config_list[i] != "default.json":
+                config_list[i] = config_list[i].replace("../json/","").replace(".json","").replace("_"," ")
         return config_list
 
     def get_config(self):
@@ -130,12 +131,14 @@ class hasspydisplay:
         menu_item = self.get_config_list()
         print(f"<div class='menu'>")
         for i in range(len(menu_item)):
-            page = menu_item[i].replace(" ","_")
-            form = "<form id='"+page+"-menu' action=''>"
-            form += "<input type='hidden' id='page' name='page' value='"+page+"'>\n"
-            form += menu_item[i]+"\n"
-            form += "</form>"
-            print(f"<div class='menu_item {menu_item[i]}' onclick='document.getElementById(\"{page}-menu\").submit()'>\n{form}\n</div>\n")
+            if menu_item[i] != "default" or menu_item[i] != "other":
+                # DONT DISPLAY DEFAULT ENTRIES!!!
+                page = menu_item[i].replace(" ","_")
+                form = "<form id='"+page+"-menu' action=''>"
+                form += "<input type='hidden' id='page' name='page' value='"+page+"'>\n"
+                form += menu_item[i]+"\n"
+                form += "</form>"
+                print(f"<div class='menu_item {menu_item[i]}' onclick='document.getElementById(\"{page}-menu\").submit()'>\n{form}\n</div>\n")
         print(f"</div>")
 
     def print_css(self):
